@@ -30,7 +30,7 @@ function Testimonial({
             )
           )}
         </div>
-        <p className="italic mb-6">"{quote}"</p>
+        <p className="italic mb-6">&quot;{quote}&quot;</p>
         <div className="flex items-center gap-3">
           <Avatar src={avatar} alt={author} size="sm" />
           <div>
