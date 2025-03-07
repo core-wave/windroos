@@ -43,7 +43,7 @@ function Testimonial({
   );
 }
 
-export function TestimonialSection() {
+export default async function TestimonialSection() {
   return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
       <div className="text-center mb-12">

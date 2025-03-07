@@ -1,5 +1,5 @@
 import { accommodations } from "@/data/accommodations";
-import { AccommodationCard } from "./accommodation-card";
+import AccommodationCard from "./accommodation-card";
 
 export default async function AccommodationSection() {
   return (

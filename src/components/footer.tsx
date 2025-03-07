@@ -8,7 +8,7 @@ import TablerBrandInstagram from "./icons/tabler-instagram";
 import TablerBrandFacebook from "./icons/tabler-facebook";
 import MdiCompassRose from "./icons/compass";
 
-export function Footer() {
+export default async function Footer() {
   return (
     <footer className="bg-content1 pt-12 pb-6 px-4">
       <div className="max-w-7xl mx-auto">

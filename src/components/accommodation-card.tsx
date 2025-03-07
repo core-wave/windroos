@@ -4,7 +4,7 @@ import TablerUsers from "./icons/tabler-users";
 import TablerSquare from "./icons/tabler-square";
 import { Accommodation } from "@/data/accommodations";
 
-export function AccommodationCard({
+export default async function AccommodationCard({
   accommodation,
 }: {
   accommodation: Accommodation;

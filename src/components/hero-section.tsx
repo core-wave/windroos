@@ -1,14 +1,8 @@
-"use client";
-
 import React from "react";
-import { Button, Card, CardBody, Input, Link } from "@heroui/react";
+import { Button, Link } from "@heroui/react";
 import TablerArrowRight from "./icons/tabler-arrow-right";
 
-export function HeroSection() {
-  const [checkIn, setCheckIn] = React.useState("");
-  const [checkOut, setCheckOut] = React.useState("");
-  const [guests, setGuests] = React.useState("");
-
+export default async function HeroSection() {
   return (
     <section className="relative">
       {/* Hero Image */}

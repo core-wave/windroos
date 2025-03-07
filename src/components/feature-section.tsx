@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { Card, CardBody } from "@heroui/react";
-import TablerSquare from "./icons/tabler-square";
 import TablerMap2 from "./icons/tabler-map-2";
 import TablerWifi from "./icons/tabler-wifi";
 import TablerBike from "./icons/tabler-bike";
@@ -26,7 +25,7 @@ function Feature({ icon, title, description }: FeatureProps) {
   );
 }
 
-export function FeatureSection() {
+export default async function FeatureSection() {
   return (
     <section className="py-16 px-4 bg-default-50">
       <div className="max-w-7xl mx-auto">

@@ -1,9 +1,9 @@
 import AccommodationSection from "@/components/accommodation-section";
-import { FeatureSection } from "@/components/feature-section";
-import { Footer } from "@/components/footer";
-import { HeroSection } from "@/components/hero-section";
+import FeatureSection from "@/components/feature-section";
+import Footer from "@/components/footer";
+import HeroSection from "@/components/hero-section";
 import Navigation from "@/components/navigation";
-import { TestimonialSection } from "@/components/testimonial-section";
+import TestimonialSection from "@/components/testimonial-section";
 import { Button, Link } from "@heroui/react";
 
 export default function Home() {
