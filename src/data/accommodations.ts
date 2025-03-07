@@ -4,6 +4,7 @@ export type Accommodation = {
   image: string;
   capacity: number;
   size: number;
+  href: string;
 };
 
 export const accommodations: Accommodation[] = [
@@ -14,6 +15,7 @@ export const accommodations: Accommodation[] = [
     image: "/img/oost.jpeg",
     size: 30,
     title: "Appartement Oost",
+    href: "https://www.airbnb.com/rooms/841165679056770234",
   },
   {
     capacity: 2,
@@ -22,5 +24,6 @@ export const accommodations: Accommodation[] = [
     image: "/img/west.avif",
     size: 30,
     title: "Appartement West",
+    href: "https://www.airbnb.com/rooms/821576617184843619",
   },
 ];

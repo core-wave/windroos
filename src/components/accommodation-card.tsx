@@ -1,16 +1,26 @@
+"use client";
+
 import React from "react";
-import { Card, CardBody, Image } from "@heroui/react";
+import { Card, CardBody, Image, Link } from "@heroui/react";
 import TablerUsers from "./icons/tabler-users";
 import TablerSquare from "./icons/tabler-square";
 import { Accommodation } from "@/data/accommodations";
+import { useRouter } from "next/navigation";
 
-export default async function AccommodationCard({
+export default function AccommodationCard({
   accommodation,
 }: {
   accommodation: Accommodation;
 }) {
+  const router = useRouter();
+
   return (
-    <Card className="overflow-hidden w-full max-w-lg" isHoverable isPressable>
+    <Card
+      onPress={() => router.push(accommodation.href)}
+      className="overflow-hidden w-full max-w-lg"
+      isHoverable
+      isPressable
+    >
       <div className="relative aspect-video">
         <Image
           removeWrapper
