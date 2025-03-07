@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Card, CardBody, Image, Link } from "@heroui/react";
+import { Card, CardBody, Image } from "@heroui/react";
 import TablerUsers from "./icons/tabler-users";
 import TablerSquare from "./icons/tabler-square";
 import { Accommodation } from "@/data/accommodations";
