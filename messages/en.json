@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "book": "Book now"
+  },
+  "languages": {
+    "nl": "Dutch",
+    "de": "German",
+    "en": "English"
+  },
+  "hero": {
+    "title": "Experience the peace of the polder",
+    "description": "Authentic apartments surrounded by a picturesque polder landscape",
+    "cta": "Check Availability"
+  }
+}

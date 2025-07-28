@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "book": "Boek nu"
+  },
+  "languages": {
+    "nl": "Nederlands",
+    "de": "Duits",
+    "en": "Engels"
+  },
+  "hero": {
+    "title": "Ervaar de rust van de polder",
+    "description": "Authentieke appartementen omringd door een pittoresk polderlandschap",
+    "cta": "Check Beschikbaarheid"
+  }
+}

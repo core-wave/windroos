@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "book": "Jetzt buchen"
+  },
+  "languages": {
+    "nl": "Niederländisch",
+    "de": "Deutsch",
+    "en": "Englisch"
+  },
+  "hero": {
+    "title": "Erleben Sie die Ruhe der Polderlandschaft",
+    "description": "Authentische Apartments umgeben von einer malerischen Polderlandschaft",
+    "cta": "Verfügbarkeit prüfen"
+  }
+}
