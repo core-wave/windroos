@@ -1,13 +1,19 @@
-import AboutUsSection from "@/components/about-us-section";
-import ApartmentsSection from "@/components/apartments-section";
-import HeroSection from "@/components/hero-section";
+import AboutSection from "@/components/sections/about";
+import AmenitiesSection from "@/components/sections/amenities";
+import ApartmentsSection from "@/components/sections/apartments";
+import ContactSection from "@/components/sections/contact";
+import HeroSection from "@/components/sections/hero";
+import LocationSection from "@/components/sections/location";
 
 export default async function Home() {
   return (
     <>
       <HeroSection />
-      <AboutUsSection />
+      <AboutSection />
       <ApartmentsSection />
+      <AmenitiesSection />
+      <LocationSection />
+      <ContactSection />
     </>
   );
 }

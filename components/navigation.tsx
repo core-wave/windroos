@@ -7,7 +7,7 @@ import { getTranslations } from "next-intl/server";
 export default async function Navigation({ locale }: { locale: Locale }) {
   const t = await getTranslations("navigation");
   return (
-    <div className="sticky flex h-16 w-full bg-background rounded-b-2xl top-0 justify-between items-center p-4 z-10 shadow-sm">
+    <div className="sticky flex h-16 w-full bg-background rounded-b-2xl top-0 justify-between items-center p-4 z-20 shadow-sm">
       <img src="dewindroos.svg" className="h-8 ml-1" />
       <div className="flex gap-2">
         <Button variant={"secondary"}>
