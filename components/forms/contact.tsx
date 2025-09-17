@@ -16,8 +16,9 @@ import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { ChevronDownIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
-import { useMemo, useReducer } from "react";
+import { useActionState, useMemo, useReducer } from "react";
 import { DateRange } from "react-day-picker";
+import { submitContactForm } from "./submitContactForm";
 
 type Apartment = "east" | "west" | "both";
 type ChildBed = "no" | "yes" | "east" | "west" | "both";
@@ -133,6 +134,7 @@ function formatDateRange(range: DateRange | undefined, locale?: string) {
 export function ContactForm() {
   const t = useTranslations("contact.form");
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [formState, action, isLoading] = useActionState(submitContactForm, {});
 
   // Options derived from current state
   const guestOptions = useMemo(() => {
@@ -162,15 +164,34 @@ export function ContactForm() {
         <CardDescription>{t("subtitle")}</CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4">
+        <form action={action} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1">
               <Label htmlFor="name">{t("fields.name")}</Label>
-              <Input id="name" name="name" required />
+              <Input
+                id="name"
+                name="name"
+                defaultValue={formState.fieldValues?.name}
+              />
+              {formState.errors && formState.errors["name"] && (
+                <p className="text-xs text-destructive">
+                  {formState.errors["name"].errors[0]}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-1">
               <Label htmlFor="email">{t("fields.email")}</Label>
-              <Input id="email" name="email" type="email" required />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                defaultValue={formState.fieldValues?.email}
+              />
+              {formState.errors && formState.errors["email"] && (
+                <p className="text-xs text-destructive">
+                  {formState.errors["email"].errors[0]}
+                </p>
+              )}
             </div>
           </div>
 
