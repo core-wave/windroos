@@ -5,11 +5,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Bed, Users, Home } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import Link from "next/link";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
 export default async function ApartmentsSection() {
   const t = await getTranslations("apartments");
@@ -19,6 +26,13 @@ export default async function ApartmentsSection() {
       name: t("east.name"),
       description: t("east.description"),
       image: "/oost.JPG?height=300&width=400",
+      images: [
+        "/oost/1.JPG?height=300&width=400",
+        "/oost/2.JPG?height=300&width=400",
+        "/oost/3.JPG?height=300&width=400",
+        "/oost/4.JPG?height=300&width=400",
+        "/oost/5.JPG?height=300&width=400",
+      ],
       features: [
         t("features.beds"),
         t("features.kitchen"),
@@ -30,6 +44,12 @@ export default async function ApartmentsSection() {
       name: t("west.name"),
       description: t("west.description"),
       image: "/west.JPG?height=300&width=400",
+      images: [
+        "/west/1.JPG?height=300&width=400",
+        "/west/2.JPG?height=300&width=400",
+        "/west/3.JPG?height=300&width=400",
+        "/west/4.JPG?height=300&width=400",
+      ],
       features: [
         t("features.beds"),
         t("features.kitchen"),
@@ -40,7 +60,7 @@ export default async function ApartmentsSection() {
   ];
 
   return (
-    <section className="py-16 bg-green-50">
+    <section id="apartments" className="py-16 bg-green-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-green-800 mb-4">
@@ -57,17 +77,24 @@ export default async function ApartmentsSection() {
               key={index}
               className="overflow-hidden hover:shadow-lg transition-shadow pt-0"
             >
-              <div className="relative aspect-video">
-                <Image
-                  fill
-                  src={apartment.image || "/placeholder.svg"}
-                  alt={apartment.name}
-                  className="object-cover"
-                />
-                <Badge className="absolute top-4 left-4 bg-green-700">
-                  {t("available")}
-                </Badge>
-              </div>
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {apartment.images.map((image) => (
+                    <CarouselItem key={image}>
+                      <div className="relative aspect-3/2">
+                        <Image
+                          fill
+                          src={image || "/placeholder.svg"}
+                          alt={image}
+                          className="object-cover"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-3 top-1/2 -translate-y-1/2 translate-x-0 z-20" />
+                <CarouselNext className="right-3 top-1/2 -translate-y-1/2 -translate-x-0 z-20" />
+              </Carousel>
               <CardHeader>
                 <CardTitle className="text-green-800">
                   {apartment.name}
@@ -100,8 +127,11 @@ export default async function ApartmentsSection() {
                     <span>45m²</span>
                   </div>
                 </div>
-                <Button className="w-full bg-green-700 hover:bg-green-800">
-                  {t("checkAvailability")}
+                <Button
+                  className="w-full bg-green-700 hover:bg-green-800"
+                  asChild
+                >
+                  <Link href="#contact">{t("checkAvailability")}</Link>
                 </Button>
               </CardContent>
             </Card>

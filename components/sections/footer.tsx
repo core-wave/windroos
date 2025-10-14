@@ -8,7 +8,7 @@ export default async function FooterSection() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">{t("title")}</h3>
+            <h3 className="font-semibold mb-4">{t("title")}</h3>
             <p className="text-green-100 mb-2">
               {t("address.street")}
               <br />

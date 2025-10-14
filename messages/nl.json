@@ -101,12 +101,12 @@
     "attractions": {
       "title": "Populaire Uitstapjes",
       "items": {
-        "1": "Keukenhof (seizoensgebonden)",
-        "2": "Zaanse Schans",
+        "1": "Urk",
+        "2": "Giethoorn",
         "3": "Volendam & Marken",
         "4": "Amsterdam (45 min)",
-        "5": "Kinderdijk Molens",
-        "6": "Nationaal Park Nieuw Land"
+        "5": "Zaanse Schans",
+        "6": "Zwolle"
       }
     },
     "views": "Prachtige Vergezichten"
@@ -119,7 +119,7 @@
       "subtitle": "Neem direct contact met ons op",
       "phone": "+31 6 1301 7688",
       "phoneNote": "Bel of WhatsApp",
-      "email": "eoost71@gmail.com",
+      "email": "info@boerderijdewindroos.nl",
       "contact": "E. Oost",
       "responseTitle": "Snelle Respons",
       "responseNote": "Vaak binnen het uur"
@@ -151,7 +151,12 @@
         "messagePlaceholder": "Vertel ons over uw wensen..."
       },
       "required": "*",
-      "submit": "Verstuur Aanvraag"
+      "submit": "Verstuur Aanvraag",
+      "errors": {
+        "nameRequired": "Vul je naam in",
+        "emailRequired": "Vul je e-mail in",
+        "dateRequired": "Selecteer datums"
+      }
     }
   },
   "footer": {
@@ -165,13 +170,13 @@
       "title": "Contact",
       "name": "E. Oost",
       "phone": "+31 6 1301 7688",
-      "email": "eoost71@gmail.com"
+      "email": "info@boerderijdewindroos.nl"
     },
     "business": {
       "title": "Bedrijfsgegevens",
       "owner": "F.J. Roos",
       "kvk": "KvK: 32166232"
     },
-    "copyright": "© 2024 Boerderij de Windroos. Alle rechten voorbehouden."
+    "copyright": "© 2025 Boerderij de Windroos. Alle rechten voorbehouden."
   }
 }

@@ -6,18 +6,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Phone, Mail, MessageCircle, Clock } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { ContactForm } from "../forms/contact";
+import Link from "next/link";
 
 export default async function ContactSection() {
   const t = await getTranslations("contact");
 
   return (
-    <section className="py-16 bg-white">
+    <section id="contact" className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-green-800 mb-4">
@@ -75,8 +73,11 @@ export default async function ContactSection() {
                 <p className="text-green-700 mb-4">
                   {t("whatsapp.description")}
                 </p>
-                <Button className="w-full bg-green-600 hover:bg-green-700">
-                  {t("whatsapp.button")}
+                <Button
+                  className="w-full bg-green-600 hover:bg-green-700"
+                  asChild
+                >
+                  <Link href={"tel:+31613017688"}>{t("whatsapp.button")}</Link>
                 </Button>
               </CardContent>
             </Card>

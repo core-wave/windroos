@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 
 export default async function HeroSection() {
   const t = await getTranslations("hero");
@@ -32,9 +33,16 @@ export default async function HeroSection() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg">{t("viewApartments")}</Button>
-          <Button size="lg" variant="outline" className="text-foreground">
-            {t("contact")}
+          <Button size="lg" asChild>
+            <Link href={"#apartments"}>{t("viewApartments")}</Link>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="text-foreground"
+            asChild
+          >
+            <Link href={"#contact"}>{t("contact")}</Link>
           </Button>
         </div>
       </div>

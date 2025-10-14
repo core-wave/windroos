@@ -1,15 +1,182 @@
 {
-  "navigation": {
-    "book": "Book now"
-  },
   "languages": {
     "nl": "Dutch",
     "de": "German",
     "en": "English"
   },
+  "navigation": {
+    "book": "Book Now"
+  },
   "hero": {
-    "title": "Experience the peace of the polder",
-    "description": "Authentic apartments surrounded by a picturesque polder landscape",
-    "cta": "Check Availability"
+    "title": "Boerderij de Windroos",
+    "subtitle": "Welcome to our farm located in a beautiful polder landscape with stunning views",
+    "location": "Tollebeek, Netherlands",
+    "phone": "+31 6 1301 7688",
+    "viewApartments": "View Apartments",
+    "contact": "Get in Touch"
+  },
+  "about": {
+    "title": "Pure Nature Experience",
+    "description1": "No noise from highways—just pure nature and everything that comes with farm life. Our apartments are fully furnished and offer all the comfort for a relaxing stay.",
+    "description2": "In nice weather, you can enjoy the terrace or the large garden. Centrally located in the Netherlands, our location is perfect for trips throughout the country.",
+    "apartments": "Apartments",
+    "size": "Per apartment"
+  },
+  "apartments": {
+    "title": "Our Apartments",
+    "subtitle": "Visit our East or West apartment. Both apartments can also be rented together.",
+    "east": {
+      "name": "East Apartment",
+      "description": "Our east-facing apartment with a beautiful view over the polder"
+    },
+    "west": {
+      "name": "West Apartment",
+      "description": "Our west-facing apartment with sunset views"
+    },
+    "features": {
+      "beds": "2 electrically adjustable beds",
+      "kitchen": "Fully equipped kitchen",
+      "terrace": "Private terrace",
+      "size": "45m² living space"
+    },
+    "capacity": {
+      "adults": "2 adults",
+      "baby": "+ baby bed available"
+    },
+    "available": "Available",
+    "checkAvailability": "Check Availability"
+  },
+  "amenities": {
+    "title": "Amenities & Service",
+    "subtitle": "Everything you need for a comfortable stay",
+    "items": {
+      "wifi": {
+        "title": "Free WiFi",
+        "description": "Strong WiFi indoors and outdoors"
+      },
+      "parking": {
+        "title": "Free Parking",
+        "description": "Free parking in front of the door"
+      },
+      "bikeRental": {
+        "title": "Bike Rental",
+        "description": "Available upon request"
+      },
+      "bikeStorage": {
+        "title": "Bike Storage",
+        "description": "Secure storage for your bikes"
+      },
+      "laundry": {
+        "title": "Washer/Dryer",
+        "description": "Available in every bathroom"
+      },
+      "kitchen": {
+        "title": "Fully Equipped",
+        "description": "Kitchen with all necessities"
+      },
+      "linens": {
+        "title": "Bed/Bath/Kitchen Linens",
+        "description": "Everything is provided"
+      },
+      "garden": {
+        "title": "Large Garden & Terrace",
+        "description": "Enjoy the fresh air"
+      }
+    },
+    "stayInfo": {
+      "title": "Short or Long Stay",
+      "description": "The apartments are suitable for both short and long stays.",
+      "responseTime": "We usually respond within an hour!"
+    }
+  },
+  "location": {
+    "title": "Perfect Location",
+    "subtitle": "Centrally located in the Netherlands – ideal for day trips across the country",
+    "address": {
+      "title": "Our Address",
+      "street": "Tollebekerweg 18-2",
+      "postal": "8309 RK Tollebeek",
+      "country": "Netherlands"
+    },
+    "attractions": {
+      "title": "Popular Day Trips",
+      "items": {
+        "1": "Urk",
+        "2": "Giethoorn",
+        "3": "Volendam & Marken",
+        "4": "Amsterdam (45 min)",
+        "5": "Zaanse Schans",
+        "6": "Zwolle"
+      }
+    },
+    "views": "Beautiful Views"
+  },
+  "contact": {
+    "title": "Contact & Reservation",
+    "subtitle": "Ask about the possibilities – we usually respond within an hour!",
+    "info": {
+      "title": "Contact Information",
+      "subtitle": "Get in touch directly",
+      "phone": "+31 6 1301 7688",
+      "phoneNote": "Call or WhatsApp",
+      "email": "info@boerderijdewindroos.nl",
+      "contact": "E. Oost",
+      "responseTitle": "Quick Response",
+      "responseNote": "Usually within the hour"
+    },
+    "whatsapp": {
+      "title": "WhatsApp Contact",
+      "description": "For quick questions and direct availability",
+      "button": "WhatsApp +31 6 1301 7688"
+    },
+    "form": {
+      "title": "Reservation Request",
+      "subtitle": "Fill in the form below for a non-binding inquiry",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone (optional)",
+        "apartments": "Preferred Apartment",
+        "east": "East",
+        "west": "West",
+        "both": "Both",
+        "childBed": "Extra Baby Bed (0–3 years)",
+        "yes": "Yes",
+        "no": "No",
+        "dates": "Preferred Dates",
+        "datesPlaceholder": "Select Dates",
+        "guests": "Number of Guests",
+        "guestsPlaceholder": "e.g. 2 adults",
+        "message": "Message",
+        "messagePlaceholder": "Tell us about your wishes..."
+      },
+      "required": "*",
+      "submit": "Send Request",
+      "errors": {
+        "nameRequired": "Please enter your name",
+        "emailRequired": "Please enter your email",
+        "dateRequired": "Please select dates"
+      }
+    }
+  },
+  "footer": {
+    "title": "Boerderij de Windroos",
+    "address": {
+      "street": "Tollebekerweg 18-2",
+      "postal": "8309 RK Tollebeek",
+      "country": "Netherlands"
+    },
+    "contact": {
+      "title": "Contact",
+      "name": "E. Oost",
+      "phone": "+31 6 1301 7688",
+      "email": "info@boerderijdewindroos.nl"
+    },
+    "business": {
+      "title": "Business Details",
+      "owner": "F.J. Roos",
+      "kvk": "Chamber of Commerce: 32166232"
+    },
+    "copyright": "© 2025 Boerderij de Windroos. All rights reserved."
   }
 }

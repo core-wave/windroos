@@ -1,15 +1,182 @@
 {
-  "navigation": {
-    "book": "Jetzt buchen"
-  },
   "languages": {
     "nl": "Niederländisch",
     "de": "Deutsch",
     "en": "Englisch"
   },
+  "navigation": {
+    "book": "Jetzt Buchen"
+  },
   "hero": {
-    "title": "Erleben Sie die Ruhe der Polderlandschaft",
-    "description": "Authentische Apartments umgeben von einer malerischen Polderlandschaft",
-    "cta": "Verfügbarkeit prüfen"
+    "title": "Bauernhof De Windroos",
+    "subtitle": "Willkommen auf unserem Bauernhof im schönen Polderland mit herrlichen Ausblicken",
+    "location": "Tollebeek, Niederlande",
+    "phone": "+31 6 1301 7688",
+    "viewApartments": "Apartments Ansehen",
+    "contact": "Kontakt Aufnehmen"
+  },
+  "about": {
+    "title": "Reine Natur Genießen",
+    "description1": "Keine Autobahngeräusche – nur reine Natur und alles, was zum Landleben gehört. Unsere Apartments sind komplett eingerichtet und bieten allen Komfort für einen entspannten Aufenthalt.",
+    "description2": "Bei schönem Wetter können Sie die Terrasse oder den großen Garten genießen. Zentral in den Niederlanden gelegen, eignet sich unsere Lage perfekt für Ausflüge im ganzen Land.",
+    "apartments": "Apartments",
+    "size": "Pro Apartment"
+  },
+  "apartments": {
+    "title": "Unsere Apartments",
+    "subtitle": "Besuchen Sie unser Apartment Ost oder West. Beide können auch zusammen gemietet werden.",
+    "east": {
+      "name": "Apartment Ost",
+      "description": "Unser östlich gelegenes Apartment mit wunderschönem Blick über den Polder"
+    },
+    "west": {
+      "name": "Apartment West",
+      "description": "Unser westlich gelegenes Apartment mit Blick auf den Sonnenuntergang"
+    },
+    "features": {
+      "beds": "2 elektrisch verstellbare Betten",
+      "kitchen": "Voll ausgestattete Küche",
+      "terrace": "Eigene Terrasse",
+      "size": "45m² Wohnfläche"
+    },
+    "capacity": {
+      "adults": "2 Erwachsene",
+      "baby": "+ Babybett möglich"
+    },
+    "available": "Verfügbar",
+    "checkAvailability": "Verfügbarkeit Prüfen"
+  },
+  "amenities": {
+    "title": "Ausstattung & Service",
+    "subtitle": "Alles, was Sie für einen komfortablen Aufenthalt benötigen",
+    "items": {
+      "wifi": {
+        "title": "Kostenloses WLAN",
+        "description": "Gutes WLAN drinnen und draußen"
+      },
+      "parking": {
+        "title": "Kostenloses Parken",
+        "description": "Kostenloses Parken direkt vor der Tür"
+      },
+      "bikeRental": {
+        "title": "Fahrradverleih",
+        "description": "Je nach Verfügbarkeit"
+      },
+      "bikeStorage": {
+        "title": "Fahrradabstellraum",
+        "description": "Sichere Unterbringung für Ihre Fahrräder"
+      },
+      "laundry": {
+        "title": "Waschmaschine/Trockner",
+        "description": "In jedem Badezimmer vorhanden"
+      },
+      "kitchen": {
+        "title": "Voll Ausgestattet",
+        "description": "Küche mit allen notwendigen Utensilien"
+      },
+      "linens": {
+        "title": "Bett-/Bad-/Küchenwäsche",
+        "description": "Alles wird bereitgestellt"
+      },
+      "garden": {
+        "title": "Großer Garten & Terrasse",
+        "description": "Genießen Sie die frische Luft"
+      }
+    },
+    "stayInfo": {
+      "title": "Kurz- oder Langzeitaufenthalt",
+      "description": "Die Apartments eignen sich sowohl für kurze als auch für längere Aufenthalte.",
+      "responseTime": "Unsere Reaktionszeit beträgt meist weniger als eine Stunde!"
+    }
+  },
+  "location": {
+    "title": "Perfekte Lage",
+    "subtitle": "Zentral in den Niederlanden gelegen – ideal für Ausflüge im ganzen Land",
+    "address": {
+      "title": "Unsere Adresse",
+      "street": "Tollebekerweg 18-2",
+      "postal": "8309 RK Tollebeek",
+      "country": "Niederlande"
+    },
+    "attractions": {
+      "title": "Beliebte Ausflugsziele",
+      "items": {
+        "1": "Urk",
+        "2": "Giethoorn",
+        "3": "Volendam & Marken",
+        "4": "Amsterdam (45 Min.)",
+        "5": "Zaanse Schans",
+        "6": "Zwolle"
+      }
+    },
+    "views": "Wunderschöne Ausblicke"
+  },
+  "contact": {
+    "title": "Kontakt & Reservierung",
+    "subtitle": "Fragen Sie nach den Möglichkeiten – wir antworten meist innerhalb einer Stunde!",
+    "info": {
+      "title": "Kontaktdaten",
+      "subtitle": "Nehmen Sie direkt Kontakt mit uns auf",
+      "phone": "+31 6 1301 7688",
+      "phoneNote": "Anruf oder WhatsApp",
+      "email": "info@boerderijdewindroos.nl",
+      "contact": "E. Oost",
+      "responseTitle": "Schnelle Antwort",
+      "responseNote": "Meist innerhalb einer Stunde"
+    },
+    "whatsapp": {
+      "title": "WhatsApp Kontakt",
+      "description": "Für schnelle Fragen und direkte Verfügbarkeit",
+      "button": "WhatsApp +31 6 1301 7688"
+    },
+    "form": {
+      "title": "Reservierungsanfrage",
+      "subtitle": "Füllen Sie das untenstehende Formular für eine unverbindliche Anfrage aus",
+      "fields": {
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon (optional)",
+        "apartments": "Gewünschtes Apartment",
+        "east": "Ost",
+        "west": "West",
+        "both": "Beide",
+        "childBed": "Zusätzliches Babybett (0–3 Jahre)",
+        "yes": "Ja",
+        "no": "Nein",
+        "dates": "Gewünschter Zeitraum",
+        "datesPlaceholder": "Daten Wählen",
+        "guests": "Anzahl der Gäste",
+        "guestsPlaceholder": "z. B. 2 Erwachsene",
+        "message": "Nachricht",
+        "messagePlaceholder": "Teilen Sie uns Ihre Wünsche mit..."
+      },
+      "required": "*",
+      "submit": "Anfrage Senden",
+      "errors": {
+        "nameRequired": "Bitte geben Sie Ihren Namen ein",
+        "emailRequired": "Bitte geben Sie Ihre E-Mail ein",
+        "dateRequired": "Bitte wählen Sie ein Datum aus"
+      }
+    }
+  },
+  "footer": {
+    "title": "Bauernhof De Windroos",
+    "address": {
+      "street": "Tollebekerweg 18-2",
+      "postal": "8309 RK Tollebeek",
+      "country": "Niederlande"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "name": "E. Oost",
+      "phone": "+31 6 1301 7688",
+      "email": "info@boerderijdewindroos.nl"
+    },
+    "business": {
+      "title": "Unternehmensdaten",
+      "owner": "F.J. Roos",
+      "kvk": "Handelskammer: 32166232"
+    },
+    "copyright": "© 2025 Bauernhof De Windroos. Alle Rechte vorbehalten."
   }
 }

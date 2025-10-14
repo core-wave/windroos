@@ -19,6 +19,7 @@ import { Calendar } from "../ui/calendar";
 import { useActionState, useMemo, useReducer } from "react";
 import { DateRange } from "react-day-picker";
 import { submitContactForm } from "./submitContactForm";
+import { Spinner } from "../ui/spinner";
 
 type Apartment = "east" | "west" | "both";
 type ChildBed = "no" | "yes" | "east" | "west" | "both";
@@ -277,16 +278,24 @@ export function ContactForm() {
                   />
                 </PopoverContent>
               </Popover>
+              {formState.errors &&
+                (formState.errors["date_from"] ||
+                  formState.errors["date_to"]) && (
+                  <p className="text-xs text-destructive">
+                    {formState.errors["date_from"].errors[0] ||
+                      formState.errors["date_to"].errors[0]}
+                  </p>
+                )}
               {/* Store ISO to submit if you like */}
               <input
                 type="hidden"
                 name="date_from"
-                value={state.dateRange?.from?.toISOString() ?? ""}
+                value={state.dateRange?.from?.toLocaleDateString("nl-NL") ?? ""}
               />
               <input
                 type="hidden"
                 name="date_to"
-                value={state.dateRange?.to?.toISOString() ?? ""}
+                value={state.dateRange?.to?.toLocaleDateString("nl-NL") ?? ""}
               />
             </div>
 
@@ -333,7 +342,7 @@ export function ContactForm() {
             type="submit"
             className="w-full bg-green-700 hover:bg-green-800"
           >
-            {t("submit")}
+            {t("submit")} {isLoading && <Spinner />}
           </Button>
         </form>
       </CardContent>
