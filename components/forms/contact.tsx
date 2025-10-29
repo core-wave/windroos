@@ -198,7 +198,11 @@ export function ContactForm() {
 
           <div className="flex flex-col gap-1">
             <Label htmlFor="phone">{t("fields.phone")}</Label>
-            <Input id="phone" name="phone" />
+            <Input
+              id="phone"
+              name="phone"
+              defaultValue={formState.fieldValues?.phone}
+            />
           </div>
 
           <div className="flex flex-col gap-1">
@@ -232,8 +236,8 @@ export function ContactForm() {
                     {opt === "no"
                       ? t("fields.no")
                       : opt === "yes"
-                      ? t("fields.yes")
-                      : t(`fields.${opt}`)}
+                        ? t("fields.yes")
+                        : t(`fields.${opt}`)}
                     {/* east/west/both i18n */}
                   </TabsTrigger>
                 ))}
@@ -333,6 +337,7 @@ export function ContactForm() {
             <Textarea
               id="message"
               name="message"
+              defaultValue={formState.fieldValues?.message}
               placeholder={t("fields.messagePlaceholder")}
               rows={4}
             />

@@ -39,6 +39,8 @@ export default async function ApartmentsSection() {
         t("features.terrace"),
         t("features.size"),
       ],
+      airBnbLink: "https://www.airbnb.com/rooms/841165679056770234",
+      bookingLink: "",
     },
     {
       name: t("west.name"),
@@ -56,6 +58,8 @@ export default async function ApartmentsSection() {
         t("features.terrace"),
         t("features.size"),
       ],
+      airBnbLink: "https://www.airbnb.com/rooms/821576617184843619",
+      bookingLink: "",
     },
   ];
 
@@ -133,6 +137,18 @@ export default async function ApartmentsSection() {
                 >
                   <Link href="#contact">{t("checkAvailability")}</Link>
                 </Button>
+                <div className="w-full grid grid-cols-2 gap-2 pt-2">
+                  <Button variant={"outline"} asChild>
+                    <Link href={apartment.airBnbLink} target="_blank">
+                      <img src={"/airbnb.svg"} className="h-3.5" />
+                    </Link>
+                  </Button>
+                  <Button variant={"outline"} asChild>
+                    <Link href={apartment.bookingLink} target="_blank">
+                      <img src={"/booking.svg"} className="h-4" />
+                    </Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}

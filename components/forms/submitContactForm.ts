@@ -1,8 +1,15 @@
 "use server";
 
-import { ContactFormData, contactFormSchema } from "@/lib/schemas";
+import {
+  Apartment,
+  ChildBed,
+  ContactFormData,
+  contactFormSchema,
+} from "@/lib/schemas";
 import { FormResult } from "@/lib/types";
 import z from "zod";
+import { Resend } from "resend";
+import { EmailTemplate } from "../email-template";
 
 export async function submitContactForm(
   prevState: FormResult<ContactFormData>,
@@ -11,8 +18,13 @@ export async function submitContactForm(
   const rawData = {
     name: formData.get("name") as string,
     email: formData.get("email") as string,
+    phone: formData.get("phone") as string,
     date_from: formData.get("date_from") as string,
     date_to: formData.get("date_to") as string,
+    apartment: formData.get("apartment") as Apartment,
+    childBed: formData.get("childBed") as ChildBed,
+    guests: Number(formData.get("guests")),
+    message: formData.get("message") as string,
   };
 
   console.log(rawData);
@@ -32,31 +44,26 @@ export async function submitContactForm(
     };
   }
 
-  //   const supabase = await createClient();
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
-  //   const headersList = await headers();
-  //   const origin = headersList.get("origin") || "";
+  const result = await resend.emails.send({
+    from: "onboarding@resend.dev",
+    to: "david@boerderijdewindroos.nl",
+    subject: `Reserveringsaanvraag: ${parsed.data.date_from} tot ${parsed.data.date_to}`,
+    react: EmailTemplate({
+      email: parsed.data.email,
+      name: parsed.data.name,
+      date_from: parsed.data.date_from,
+      date_to: parsed.data.date_to,
+      apartment: parsed.data.apartment,
+      childBed: parsed.data.childBed,
+      guests: parsed.data.guests,
+      message: parsed.data.message,
+      phone: parsed.data.phone,
+    }),
+  });
 
-  //   const { error } = await supabase.auth.signUp({
-  //     email: parsed.data.email,
-  //     password: parsed.data.password,
-  //     options: {
-  //       data: {
-  //         first_name: parsed.data.first_name,
-  //         last_name: parsed.data.last_name,
-  //       },
-  //       emailRedirectTo: origin,
-  //     },
-  //   });
-
-  //   if (error) {
-  //     console.error(error);
-
-  //     return {
-  //       success: false,
-  //       fieldValues: rawData,
-  //     };
-  //   }
+  console.log(result);
 
   return {
     success: true,
