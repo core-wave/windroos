@@ -6,15 +6,15 @@ import {
   ContactFormData,
   contactFormSchema,
 } from "@/lib/schemas";
-import { FormResult } from "@/lib/types";
+import { FormState } from "@/lib/types";
 import z from "zod";
 import { Resend } from "resend";
 import { EmailTemplate } from "../email-template";
 
 export async function submitContactForm(
-  prevState: FormResult<ContactFormData>,
+  prevState: FormState<ContactFormData>,
   formData: FormData
-): Promise<FormResult<ContactFormData>> {
+): Promise<FormState<ContactFormData>> {
   const rawData = {
     name: formData.get("name") as string,
     email: formData.get("email") as string,
@@ -38,8 +38,8 @@ export async function submitContactForm(
   if (!parsed.success) {
     console.log(z.treeifyError(parsed.error).properties);
     return {
-      success: false,
-      errors: z.treeifyError(parsed.error).properties,
+      status: "error",
+      fieldErrors: z.treeifyError(parsed.error).properties,
       fieldValues: rawData,
     };
   }
@@ -47,8 +47,8 @@ export async function submitContactForm(
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   const result = await resend.emails.send({
-    from: "onboarding@resend.dev",
-    to: "david@boerderijdewindroos.nl",
+    from: "website@reserveringen.boerderijdewindroos.nl",
+    to: "info@boerderijdewindroos.nl",
     subject: `Reserveringsaanvraag: ${parsed.data.date_from} tot ${parsed.data.date_to}`,
     react: EmailTemplate({
       email: parsed.data.email,
@@ -66,7 +66,7 @@ export async function submitContactForm(
   console.log(result);
 
   return {
-    success: true,
+    status: "success",
     fieldValues: rawData,
   };
 }

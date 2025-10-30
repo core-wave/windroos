@@ -16,7 +16,7 @@ import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { ChevronDownIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
-import { useActionState, useMemo, useReducer } from "react";
+import { useActionState, useMemo, useReducer, useRef, useState } from "react";
 import { DateRange } from "react-day-picker";
 import { submitContactForm } from "./submitContactForm";
 import { Spinner } from "../ui/spinner";
@@ -37,7 +37,8 @@ type Action =
   | { type: "SET_CHILD_BED"; value: ChildBed }
   | { type: "SET_GUESTS"; value: 1 | 2 | 3 | 4 }
   | { type: "SET_DATE_RANGE"; value: DateRange | undefined }
-  | { type: "SET_CALENDAR_OPEN"; value: boolean };
+  | { type: "SET_CALENDAR_OPEN"; value: boolean }
+  | { type: "RESET" };
 
 const initialState: State = {
   calendarOpen: false,
@@ -55,18 +56,12 @@ function normalizeOnApartmentChange(
   let nextChildBed: ChildBed = prev.childBed;
 
   if (nextApartment === "both") {
-    // both apartments: min 2 guests
     if (nextGuests === 1) nextGuests = 2;
-
-    // if user had a generic "yes", map it to the previously selected apartment
     if (prev.childBed === "yes") {
       nextChildBed = prev.apartment === "east" ? "east" : "west";
     }
   } else {
-    // single apartment: max 2 guests
     if (nextGuests > 2) nextGuests = 2;
-
-    // child bed must be either "no" or generic "yes" on single apartment
     if (
       prev.childBed === "east" ||
       prev.childBed === "west" ||
@@ -79,7 +74,7 @@ function normalizeOnApartmentChange(
   return {
     ...prev,
     apartment: nextApartment,
-    guests: nextGuests,
+    guests: nextGuests as State["guests"],
     childBed: nextChildBed,
   };
 }
@@ -88,20 +83,13 @@ function reducer(state: State, action: Action): State {
   switch (action.type) {
     case "SET_APARTMENT":
       return normalizeOnApartmentChange(state, action.value);
-
-    case "SET_CHILD_BED": {
-      // Guard impossible choices:
-      // - On single apartment, only "no" or "yes" make sense
-      // - On both apartments, allow "no" | "east" | "west" | "both"
+    case "SET_CHILD_BED":
       if (state.apartment !== "both") {
         const v: ChildBed = action.value === "no" ? "no" : "yes";
         return { ...state, childBed: v };
       }
       return { ...state, childBed: action.value };
-    }
-
-    case "SET_GUESTS": {
-      // Enforce guest limits by apartment selection
+    case "SET_GUESTS":
       if (state.apartment === "both") {
         const v = Math.min(4, Math.max(2, action.value)) as 2 | 3 | 4;
         return { ...state, guests: v };
@@ -109,14 +97,12 @@ function reducer(state: State, action: Action): State {
         const v = action.value === 1 || action.value === 2 ? action.value : 2;
         return { ...state, guests: v };
       }
-    }
-
     case "SET_DATE_RANGE":
       return { ...state, dateRange: action.value };
-
     case "SET_CALENDAR_OPEN":
       return { ...state, calendarOpen: action.value };
-
+    case "RESET":
+      return initialState;
     default:
       return state;
   }
@@ -135,7 +121,16 @@ function formatDateRange(range: DateRange | undefined, locale?: string) {
 export function ContactForm() {
   const t = useTranslations("contact.form");
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [formState, action, isLoading] = useActionState(submitContactForm, {});
+  const [formState, action, isLoading] = useActionState(submitContactForm, {
+    status: "default",
+  });
+
+  // When success happens, show confirmation screen until dismissed.
+  const [ackSuccess, setAckSuccess] = useState(false);
+  const success = formState.status === "success" && !ackSuccess;
+
+  // Ref so we can reset native form fields
+  const formRef = useRef<HTMLFormElement>(null);
 
   // Options derived from current state
   const guestOptions = useMemo(() => {
@@ -158,6 +153,32 @@ export function ContactForm() {
       )
     : t("fields.datesPlaceholder");
 
+  // Success screen
+  if (success) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-green-800">{t("successTitle")}</CardTitle>
+          <CardDescription>{t("successSubtitle")}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button
+            className="w-full bg-green-700 hover:bg-green-800"
+            onClick={() => {
+              // Acknowledge the success screen and reset form/ui state
+              setAckSuccess(true);
+              dispatch({ type: "RESET" });
+              formRef.current?.reset();
+            }}
+          >
+            {t("newRequest")}
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Normal form
   return (
     <Card>
       <CardHeader>
@@ -165,7 +186,7 @@ export function ContactForm() {
         <CardDescription>{t("subtitle")}</CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={action} className="space-y-4">
+        <form ref={formRef} action={action} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1">
               <Label htmlFor="name">{t("fields.name")}</Label>
@@ -174,9 +195,9 @@ export function ContactForm() {
                 name="name"
                 defaultValue={formState.fieldValues?.name}
               />
-              {formState.errors && formState.errors["name"] && (
+              {formState.status == "error" && formState.fieldErrors?.name && (
                 <p className="text-xs text-destructive">
-                  {formState.errors["name"].errors[0]}
+                  {formState.fieldErrors.name.errors[0]}
                 </p>
               )}
             </div>
@@ -188,9 +209,9 @@ export function ContactForm() {
                 type="email"
                 defaultValue={formState.fieldValues?.email}
               />
-              {formState.errors && formState.errors["email"] && (
+              {formState.status == "error" && formState.fieldErrors?.email && (
                 <p className="text-xs text-destructive">
-                  {formState.errors["email"].errors[0]}
+                  {formState.fieldErrors.email.errors[0]}
                 </p>
               )}
             </div>
@@ -238,7 +259,6 @@ export function ContactForm() {
                       : opt === "yes"
                         ? t("fields.yes")
                         : t(`fields.${opt}`)}
-                    {/* east/west/both i18n */}
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -282,12 +302,12 @@ export function ContactForm() {
                   />
                 </PopoverContent>
               </Popover>
-              {formState.errors &&
-                (formState.errors["date_from"] ||
-                  formState.errors["date_to"]) && (
+              {formState.status == "error" &&
+                (formState.fieldErrors?.date_from ||
+                  formState.fieldErrors?.date_to) && (
                   <p className="text-xs text-destructive">
-                    {formState.errors["date_from"].errors[0] ||
-                      formState.errors["date_to"].errors[0]}
+                    {formState.fieldErrors?.date_from?.errors[0] ||
+                      formState.fieldErrors?.date_to?.errors[0]}
                   </p>
                 )}
               {/* Store ISO to submit if you like */}

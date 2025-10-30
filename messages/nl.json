@@ -132,6 +132,9 @@
     "form": {
       "title": "Reserveringsaanvraag",
       "subtitle": "Vul onderstaand formulier in voor een vrijblijvende aanvraag",
+      "successTitle": "Bedankt! 🎉",
+      "successSubtitle": "We hebben je aanvraag ontvangen en nemen zo snel mogelijk contact op.",
+      "newRequest": "Nog een aanvraag indienen",
       "fields": {
         "name": "Naam",
         "email": "E-mail",

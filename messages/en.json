@@ -132,6 +132,9 @@
     "form": {
       "title": "Reservation Request",
       "subtitle": "Fill in the form below for a non-binding inquiry",
+      "successTitle": "Thank you! 🎉",
+      "successSubtitle": "We've received your request and will get back to you as soon as possible.",
+      "newRequest": "Submit another request",
       "fields": {
         "name": "Name",
         "email": "Email",
